@@ -1,0 +1,10 @@
+.DS_Store
+._*
+__MACOSX/
+xcuserdata/
+*.xcuserstate
+DerivedData/
+build/
+.build/
+*.ipa
+*.dSYM/
