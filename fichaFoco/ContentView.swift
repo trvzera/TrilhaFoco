@@ -30,11 +30,14 @@ struct ContentView: View {
                     .foregroundColor(.gray.opacity(0.7))
                     .fontWeight(.bold)
                 Text("Nível de foco")
-                Slider(value: $foco.nivelFoco,in: 0...100,step: 5, onEditingChanged:
+                Slider(value: $foco.nivelFoco,in: 0...100, step: 1, onEditingChanged:
                         { editing in
                     isEditing = editing
                 }
                 )
+                .disabled(foco.materia == "")
+                .opacity(foco.materia == "" ? 0.5 : 1)
+
             }
             .padding(50)
             HStack {
@@ -46,8 +49,10 @@ struct ContentView: View {
                 .fontWeight(.bold)
                 .background(Color.gray.opacity(0.5))
                 .clipShape(RoundedRectangle(cornerRadius: 15))
+                .disabled(foco.materia == "")
+                .opacity(foco.materia == "" ? 0.2 : 1)
                 NavigationLink{
-                    AjustesFocoView(foco: foco, mostrarAlerta: $mostrarAlerta)
+                        AjustesFocoView(foco: foco, mostrarAlerta: $mostrarAlerta)
                 }label: {
                     Text("Ajustes")
                         .frame(width: 150, height: 50)
@@ -55,7 +60,7 @@ struct ContentView: View {
                         .fontWeight(.bold)
                         .background(Color.blue)
                         .clipShape(RoundedRectangle(cornerRadius: 15))
-    
+                    
                 }
             }
         }

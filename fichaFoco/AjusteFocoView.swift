@@ -49,11 +49,17 @@ struct AjustesFocoView: View {
                     )
             }
             Button("Salvar", action: {
-                dismiss()
+                mostrarAlerta = true
             })
+            .alert("Pronto", isPresented: $mostrarAlerta) {
+                Button("OK", role: .cancel) {
+                    dismiss()
+                }
+            } message: {
+                Text("Sessão de \(foco.materia) pronta: \(foco.minutosAlvo) min.")
+            }
         }
         .padding(50)
     }
 }
-
 
